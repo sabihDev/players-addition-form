@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Form</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Player Addition Form</h1>
+      <form action="/players/register" method="post">
+        <div class="input-container">
+          <input
+            type="text"
+            class="player-name"
+            id="player-name"
+            placeholder="Enter name..."
+          />
+          <select name="player-role" id="player-role">
+            <option value="bowler">Bowler</option>
+            <option value="batsman">Batsman</option>
+            <option value="all-rounder">All Rounder</option>
+          </select>
+          <input
+            type="number"
+            name="shirt-no"
+            id="shirt-no"
+            class="player-shirt-no"
+            placeholder="Enter shirt number..."
+          />
+          <div>
+            <input
+              type="checkbox"
+              name="captain"
+              id="captain"
+              class="captain"
+            />
+            <label for="captain">Captain</label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="wicket-keeper"
+              id="wicketkeeper"
+              class="wicket-keeper"
+            />
+            <label for="wicketkeeper">Wicketkeeper</label>
+          </div>
+        </div>
+        <div class="submit">
+            <button type="button" class="submit__btn" id="submit__btn">Create Player</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
