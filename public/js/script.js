@@ -1,28 +1,42 @@
-const submitButton = document.getElementById('submit__btn');
-const playerNameInput = document.getElementById('player-name');
-const playerRoleInput = document.getElementById('player-role');
-const playerShirtNumberInput = document.getElementById('shirt-no');
-const captainCheck = document.getElementById('captain');
-const wicketkeeperCheck = document.getElementById('wicketkeeper');
+// Constants
+const SubmitButton = document.getElementById('submit__btn');
+const ChoosePlayerButton = document.getElementById('choose__btn');
+const PlayerNameInput = document.getElementById('player-name');
+const PlayerRoleInput = document.getElementById('player-role');
+const PlayerShirtNumberInput = document.getElementById('shirt-no');
+const CaptainCheck = document.getElementById('captain');
+const WicketkeeperCheck = document.getElementById('wicketkeeper');
+const playerProps = {
+    Name: PlayerNameInput.value,
+    Role: PlayerRoleInput.value,
+    ShirtNo: PlayerShirtNumberInput.value,
+    IsCaptain: CaptainCheck.checked,
+    isWicketkeeper: WicketkeeperCheck.checked
+};
 
-submitButton.addEventListener('click', () => {
-    const playerProps = {
-        name: playerNameInput.value,
-        role: playerRoleInput.value,
-        shirtNo: playerShirtNumberInput.value,
-        isCaptain: captainCheck.checked,
-        isWicketkeeper: wicketkeeperCheck.checked
-    };
+// Variables
+let JsonData=[];
 
-    console.log(playerProps);
+// Onclick Eventlisteners
+SubmitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    AddPlayersInJson();
+});
 
-    const apiUrl = 'http://localhost:3000/players/register'; 
+ChoosePlayerButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    fetchJsonData();
+    console.log(JsonData);
+});
+
+// Functions
+function AddPlayersInJson() {
+    const apiUrl = 'http://localhost:3000/players/register/choose';
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', apiUrl, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
-    // Define a callback function to handle the response
     xhr.onload = function () {
         if (xhr.status === 200) {
             const response = xhr.responseText;
@@ -36,5 +50,22 @@ submitButton.addEventListener('click', () => {
         console.error('Network error occurred.');
     };
     xhr.send(JSON.stringify(playerProps));
+}
 
-});
+function fetchJsonData() {
+    const jsonFilePath = 'players.json';
+
+    fetch(jsonFilePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            JsonData.push(data);
+        })
+        .catch(error => {
+            console.error('Fetch Error:', error);
+        });
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "sdhghfgdfg",
+    "role": "all-rounder",
+    "shirtNo": "234",
+    "isCaptain": true,
+    "isWicketkeeper": false
+  },
+  {
+    "name": "sdhghfgdfg",
+    "role": "all-rounder",
+    "shirtNo": "234",
+    "isCaptain": false,
+    "isWicketkeeper": true
+  },
+  {
+    "name": "sdhghfgdfdfsgkjk",
+    "role": "batsman",
+    "shirtNo": "23354",
+    "isCaptain": false,
+    "isWicketkeeper": false
+  }
+]
