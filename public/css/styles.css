@@ -45,6 +45,39 @@ body {
   cursor: pointer;
 }
 
+.form-players {
+  margin: 0 auto;
+  min-width: 350px;
+  /* border: 2px solid greenyellow; */
+}
+
+.player,
+.form-players__header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form-players__header {
+  padding-top: 2rem;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.form-players__header > *,
+.player > * {
+  width: 30%;
+}
+
+.player{
+  padding-top: 1rem;
+  cursor: pointer;
+}
+
+.hidden{
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   html {
     font-size: 9px;
