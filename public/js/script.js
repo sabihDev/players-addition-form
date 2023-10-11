@@ -28,13 +28,11 @@ let JsonData = [];
 var userPlayer;
 
 // Onclick Eventlisteners
-SubmitButton.addEventListener('click', (e) => {
-    e.preventDefault();
+SubmitButton.addEventListener('click', () => {
     addPlayersInJson();
 });
 
-ChoosePlayerButton.addEventListener('click', (e) => {
-    e.preventDefault();
+ChoosePlayerButton.addEventListener('click', () => {
     var playersAlreadyInHtml = playersParentContainer.childNodes.length;
     if (playersAlreadyInHtml > 1) {
         for (let i = 1; i > playersAlreadyInHtml; i += 2) {
@@ -59,7 +57,7 @@ ChoosePlayerButton.addEventListener('click', (e) => {
 
 // Function for Create Players
 function addPlayersInJson() {
-    const apiUrl = 'http://localhost:3000/players/register/choose';
+    const apiUrl = 'http://localhost:3000/players/register';
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', apiUrl, true);
@@ -68,7 +66,7 @@ function addPlayersInJson() {
     xhr.onload = function () {
         if (xhr.status === 200) {
             const response = xhr.responseText;
-            console.log(response);
+            alert(response);
         } else {
             // Request encountered an error
             console.log('Request error. ');
